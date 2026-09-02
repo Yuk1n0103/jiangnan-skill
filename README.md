@@ -41,7 +41,7 @@
 
 ## 3. 安装方法
 
-本项目是一个 **WorkBuddy Skill**（写作风格引擎），通过把整个文件夹放入系统的 skills 目录完成"安装"。
+本项目是一个**写作风格 Skill**，遵循 [Anthropic Agent Skills](https://docs.claude.com/en/docs/agent-skills/) 开放规范（`SKILL.md` + `name`/`description` frontmatter + 相对路径资源），因此**核心文件平台无关**——凡是支持 Agent Skills 的 agent（WorkBuddy、Claude Code、Cursor、Cline 等）均可加载。安装方式 = 把整个文件夹放入目标平台的 skills 目录。
 
 ### 方式 A：复制到用户级 Skills 目录（推荐，跨项目可用）
 
@@ -67,6 +67,29 @@ C:\Users\<用户名>\.workbuddy\skills\jiangnan-writing-style\
 {工作区}/.workbuddy/skills/jiangnan-writing-style/
 ```
 
+### 方式 C：移植到其它 Agent 平台
+
+SKILL.md 及其引用均为**相对路径**、正文无任何平台绑定内容，因此可在其它支持 Agent Skills 的 agent 上使用。做法：把整个 `jiangnan-writing-style/` 目录（含 `references/`）复制到目标平台的 skills 根目录即可：
+
+| 平台 | 个人级（跨项目）目录 | 项目级目录 | 触发方式 |
+|---|---|---|---|
+| **WorkBuddy** | `~/.workbuddy/skills/` | `{工作区}/.workbuddy/skills/` | 说"用江南的文笔写……" |
+| **Claude Code** | `~/.claude/skills/` | `{项目}/.claude/skills/` | 同上（工具自动选用） |
+| **Cursor** | `~/.cursor/skills/` | `{项目}/.cursor/skills/` | 同上（Agent Skills 已支持） |
+| **Cline** | `~/.cline/skills/` | `{项目}/.cline/skills/` | 同上（兼容 Agent Skills 规范） |
+| 其它 Agent Skills 工具 | 该平台文档规定的 skills 根目录 | 同左 | 同上 |
+
+以 Claude Code 为例，复制命令（Git Bash / POSIX）：
+
+```bash
+mkdir -p ~/.claude/skills
+cp -r jiangnan-writing-style ~/.claude/skills/
+```
+
+> 各平台对 skill 的扫描目录与启用方式可能随版本更新，请以目标平台官方文档为准。若某平台不识别 `SKILL.md` 目录式 skill，可将本目录加入该平台的 rules/instructions 文件（导入 `SKILL.md` 全文即可），功能不变。
+>
+> 从 git 仓库复制时请**排除 `.git/` 目录**（例如 `git clone` 后删除 `.git`，或用 `tar`/`zip` 打包时忽略它），只拷贝上表文件结构。
+
 ### 安装后校验
 
 确认目录包含以下文件即安装成功：
@@ -82,6 +105,12 @@ jiangnan-writing-style/
     ├── 03-external-views.md          # 外部评价（两极化，防滤镜）
     └── TEST-local-run.md             # 本地干跑测试记录
 ```
+
+**跨平台校验要点**：`SKILL.md` 与 `references/` 的**相对结构必须整体保留**（SKILL.md 内以相对路径引用 research 文件）。复制到任何平台时请整目录拷贝，不要只拷 `SKILL.md`。安装后在目标 agent 中发起一句测试即可确认加载成功：
+
+> 用江南的文笔写一句"少年在大雪里等一个不会再回来的人"。
+
+若输出呈现"段末短句盖章 / 意象容器化情绪 / 叙述者旁观吐槽"等特征，即加载成功。
 
 ---
 
