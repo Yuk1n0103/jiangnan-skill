@@ -120,7 +120,7 @@
 
 本 skill 基于开放的 [Agent Skills](https://agentskills.io) 协议，可在任何 skills-compatible 的 AI agent runtime 中运行（WorkBuddy、Claude Code、Cursor、Cline、Codex、Gemini CLI 等）。
 
-### 方式一：git clone（推荐，仓库当前为私有）
+### 方式一：git clone（推荐）
 
 ```bash
 git clone https://github.com/Yuk1n0103/jiangnan-skill <目标平台 skills 目录>/jiangnan-writing-style
