@@ -120,18 +120,21 @@
 
 本 skill 基于开放的 [Agent Skills](https://agentskills.io) 协议，可在任何 skills-compatible 的 AI agent runtime 中运行（WorkBuddy、Claude Code、Cursor、Cline、Codex、Gemini CLI 等）。
 
-### 方式一：git clone（推荐）
+### 方式一：通用安装器一行安装（推荐）
+
+仓库已公开，可用 [skills.sh](https://skills.sh) 官方安装器一行安装，它会自动识别 runtime 并放到正确目录：
+
+```bash
+npx skills add Yuk1n0103/jiangnan-skill
+```
+
+### 方式二：git clone（备选）
 
 ```bash
 git clone https://github.com/Yuk1n0103/jiangnan-skill <目标平台 skills 目录>/jiangnan-writing-style
 ```
 
-> 若仓库日后转为公开，可改用通用安装器一行安装（会自动识别 runtime 并放到正确目录）：
-> ```bash
-> npx skills add Yuk1n0103/jiangnan-skill
-> ```
-
-### 方式二：手动安装
+### 方式三：手动安装
 
 <details>
 <summary>展开查看各 runtime 的 skills 目录</summary>
@@ -152,7 +155,7 @@ git clone https://github.com/Yuk1n0103/jiangnan-skill <对应路径>
 
 </details>
 
-### 方式三：作为参考资料使用
+### 方式四：作为参考资料使用
 
 即使 runtime 不支持 Agent Skills 自动加载，你也可以把 `SKILL.md` 的内容粘贴进对话——它本质就是一份 markdown + YAML frontmatter，是一份可直接执行的写作配方。
 
