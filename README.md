@@ -174,7 +174,7 @@ jiangnan-writing-style/
 │   └── 03-external-views.md          # 外部评价（两极化，防滤镜）
 └── examples/
     ├── demo-writing-2026-09-02.md            # 实战写作记录
-    └── dragon-raja-characters-demo-2026-09-02.md  # 龙族人物仿写示范（9 段）
+    └── dragon-raja-characters-demo-2026-09-02.md  # 龙族人物仿写示范（10 段）
 ```
 
 **跨平台校验要点**：`SKILL.md` 与 `references/`、`examples/` 的**相对结构必须整体保留**（SKILL.md 内以相对路径引用 research 文件）。复制到任何平台时请整目录拷贝，不要只拷 `SKILL.md`。
@@ -283,7 +283,7 @@ jiangnan-skill/
 │       └── 03-external-views.md
 └── examples/
     ├── demo-writing-2026-09-02.md         # 实战写作记录（输入→输出→自评）
-    └── dragon-raja-characters-demo-2026-09-02.md  # 龙族人物仿写示范（9 段）
+    └── dragon-raja-characters-demo-2026-09-02.md  # 龙族人物仿写示范（10 段）
 ```
 
 ---
